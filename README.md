@@ -3,9 +3,14 @@
 ### how to use?
 
 `pip install -r ".\requirements.txt"`  
-open nfavorites.py and it will close and generate set.yaml  
-open set.yaml and enter your cookie and useragent  
-final open nfavorites.py again and it will generate csv file if everything is ok
+
+1. Find your cookied and use id at nhentai
+2. Go to gettags.py
+3. Add your own cookie and useragent at gettags.py
+4. Run nfavourite.py
+5. A .csv file is generated
+
+open nfavorites.py again and it will generate csv file if everything is ok
 
 ### how to get my cookie?
 
