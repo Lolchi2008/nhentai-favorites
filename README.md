@@ -9,6 +9,7 @@
 3. Add your own cookie and useragent at gettags.py
 4. Run nfavourite.py
 5. A .csv file is generated
+6. To downalod torrent file, go to torrent.py add the detail and run
 
 open nfavorites.py again and it will generate csv file if everything is ok
 
