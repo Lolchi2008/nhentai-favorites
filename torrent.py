@@ -26,7 +26,7 @@ def sanitize_filename(filename):
         filename = filename.replace(char, '_')
     return filename
 
-def download_file(url, headers):
+def download_file(url, headers, file_id):
     with requests.get(url, stream=True, headers=headers) as r:
         r.raise_for_status()
         # Extracting the filename from the Content-Disposition header
@@ -37,6 +37,8 @@ def download_file(url, headers):
         else:
             filename = url.split('/')[-2] + ".txt"  # Default filename if none is provided
         filename = sanitize_filename(filename)  # Sanitize the filename
+        # Prefix the filename with file_id and a dash
+        filename = f"{file_id}-{filename}"
         # Ensure directory exists
         os.makedirs('downloads', exist_ok=True)
         filepath = os.path.join('downloads', filename)
@@ -56,12 +58,13 @@ def main():
             url = f"https://nhentai.net/g/{file_id}/download"
             print(f"Attempting to download file from {url}...")  # Informative message before download
             try:
-                # Corrected: Now passing 'headers' as an argument to download_file
-                downloaded_filepath = download_file(url, headers)
+                # Now passing 'file_id' as an additional argument to download_file
+                downloaded_filepath = download_file(url, headers, file_id)
                 print(f"Downloaded to '{downloaded_filepath}' successfully.")  # Success message
             except Exception as e:
                 print(f"Failed to download from '{url}'. Error: {e}")  # Error message
-            time.sleep(random.uniform(1.5, 5))  # Random delay between 1.5 and 3 seconds
+            time.sleep(random.uniform(1.5, 3))  # Random delay between 1.5 and 3 seconds
 
 if __name__ == "__main__":
     main()
+
