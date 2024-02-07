@@ -16,7 +16,7 @@ if not os.path.isfile("set.yaml"):
     exit()
 
 with open('set.yaml', 'r') as f:
-    data = yaml.load(f, Loader=yaml.CLoader)
+    data = yaml.safe_load(f)
     cookie = data["cookid"]
     useragent = data["useragent"]
     if cookie == "":
